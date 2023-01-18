@@ -23,7 +23,10 @@ export default function CartItem({ item, setCartTotal }: { item: item, setCartTo
         price: 0,
         color: ''
     });
-
+    const handelRemoveItem = ({ id, price, quantity }: { id: string, price: number, quantity: number }) => {
+        dispatch(removeFromCart(id))
+        setCartTotal((total: number) => total - (Number(price) * quantity))
+    }
     useEffect(() => {
 
         (async () => {
@@ -33,13 +36,13 @@ export default function CartItem({ item, setCartTotal }: { item: item, setCartTo
             if (data.exists()) {
                 setProduct(data.data());
                 setCartTotal((total: number) => total + Number(data.data().price) * item.quantity)
+
             }
             else
                 dispatch(removeFromCart(item.id));
+
         })();
-        return () => {
-            setCartTotal(0)
-        }
+
 
     }, [])
 
@@ -68,7 +71,7 @@ export default function CartItem({ item, setCartTotal }: { item: item, setCartTo
 
                 <div className="flex">
                     <button
-                        onClick={() => dispatch(removeFromCart(item.id))}
+                        onClick={() => handelRemoveItem({ id: item.id, price: product.price, quantity: item.quantity })}
                         type="button"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                     >

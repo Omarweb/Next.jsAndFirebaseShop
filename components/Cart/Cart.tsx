@@ -27,29 +27,18 @@ export default function Cart() {
                 dispatch(fetchCartApi(user.email));
                 console.log(user.email);
 
-
             } else {
                 // @ts-ignore: Object is possibly 'null'.
                 dispatch(fetchCartLocal());
 
             }
-
-
-
         });
-
-
-
-
-
         return () => {
-            setCartTotal(0)
+            setTimeout(() => { setCartTotal(0) }, 100)
+
         }
 
-
-
-
-    }, [])
+    }, [open])
 
 
 
