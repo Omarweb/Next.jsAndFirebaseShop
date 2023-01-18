@@ -1,3 +1,7 @@
+## Demo
+
+Demo Link: https://next-js-shop-private.vercel.app/
+
 This is a Simple shop project using [Next.js](https://nextjs.org/), [Firebase](https://firebase.google.com/) and [Redux toolkit](https://redux-toolkit.js.org/) .
 
 ## Getting Started
